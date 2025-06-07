@@ -1,4 +1,5 @@
 import hashlib
+from repository import insert_url_mapping, recover_url_mapping
 
 class URLShortener:
     def __init__(self):
@@ -7,13 +8,13 @@ class URLShortener:
     def shorten(self, original_url):
         encoded_original_url = original_url.encode('utf-8')
         self.md5.update(encoded_original_url)
-        hex_digest = self.md5.hexdigest()
-        # TODO: still need to record in database
-        return hex_digest
+        shortened_url = self.md5.hexdigest()
+        insert_url_mapping(original_url, shortened_url)
+        return shortened_url
 
     def recover(self, shortened_url):
-        # TODO: query from database and return it if found
-        return None
+        original_url = recover_url_mapping(shortened_url)
+        return original_url
 
     def print_urls(self, original_url, shortened_url):
         print(f'Original URL: {original_url}, Shortened URL: {shortened_url}')
