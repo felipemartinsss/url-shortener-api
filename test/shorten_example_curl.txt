@@ -1,0 +1,5 @@
+curl --location 'http://localhost:8000/api/v1/shorten' \
+--header 'Content-Type: application/json' \
+--data '{
+    "value": "https://iascblog.wordpress.com/"
+}'

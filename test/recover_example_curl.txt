@@ -1,0 +1,5 @@
+curl --location 'http://localhost:8000/api/v1/recover' \
+--header 'Content-Type: application/json' \
+--data '{
+    "value": "771bc870917c7147d1eb063a25e71894"
+}'
